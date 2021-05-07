@@ -1,0 +1,93 @@
+﻿V3.2.8
+1. Modify frameIndex(in PsFrame) counting logic
+
+V3.2.7
+1. Fix open device by alias error,when run app firstly, add DCAMXX laterly
+2. Modify depthframe'pixelFormat from PixelFormatGray16 to PixelFormatDepthMM16
+
+V3.2.6
+1. Add api
+	Ps2_SetHotPlugStatusCallback_(PtrHotPlugStatusCallback_ pCallback, void* contex)
+2. Optimize SDK code
+
+V3.2.5
+1. Add NoCCD_30 datamode for DCAM5xx
+2. Fix hoplug error in network cable connection 
+
+V3.2.4
+1. Optimize SDK demo, add buffersize check when get raw data
+
+V3.2.3
+1. If the alias is not setted, set sn as alias
+2. Add tmiestamp in PsFrame
+3. Modify the param in api "Ps2_SetHotPlugStatusCallback"
+   from "typedef void(*PtrHotPlugStatusCallback)(const char* uri, int state)"
+   to "typedef void(*PtrHotPlugStatusCallback)(const PsDeviceInfo* pInfo, int state)"
+4. Add api "Ps2_SetWaitTimeOfReadNextFrame"
+ 
+V3.2.2
+1. You need to format the UDisk,if return -1 with the status 'DEVICE_PRE_UPGRADE_IMG_COPY', when upgrade the device
+2. Fix hotplug error,in the case, remove the device,call "Ps2_StopStream"/"Ps2_CloseDevice",then add the device,call "Ps2_OpenDevice"/"Ps2_StartStream"
+
+V3.1.2
+1. Support CSI100,DCAM550U,DCAM550P
+2. Add api
+      Ps2_OpenDeviceByAlias
+	  Ps2_SetTofFrameRate
+	  Ps2_GetTofFrameRate
+	  Ps2_SetStandByEnabled
+
+V3.1.1
+1. Modify "Ps2_CloseDevice(PsDeviceHandle device)" to "Ps2_CloseDevice(PsDeviceHandle* device)",fix crash bug when call "Ps2_CloseDevice" repeatedly
+2. Add check for DCAM305
+3. Do not clean cache in SlaveMode
+4. Add comment for the range value of the PulseCount and GMMGain
+
+V3.1.0
+1. Support json config for DCAM710/DCAM800LITE/DCAM500
+2. Optimize SDK demo
+3. Add Ps2_SetSlaveModeEnabled api for DCAM710/DCAM800LITE/DCAM500
+4. In WDR mode, call Ps2_GetWDRPulseCount/Ps2_SetWDRPulseCount to get/set PulseCount and can not set/get Threshold
+
+V3.0.2
+1. Optimize ImgPreProcess code
+2. Remove ffmpeg library dependencies
+3. Remove the vdpau and X11 library dependencies in Linux SDK
+4. Comple the Samples needs opencv and the 'libopencv_highgui.so' needs 'X11',so 'ldd FrameViewer_DCAM710' still has 'libX11.so',in Linux system
+5. Optimize	SDK demo,remove "uint8_t index;" in "PsDataModeList" and "PsDepthRangeList", in "Vzense_types_710.h","Vzense_types_305.h" and "Vzense_types_800.h" 
+6. When use WDR mode, call "Ps2_SetWDROutputMode" api first,then call "Ps2_SetDataMode" api
+7. Optimize Samples code，in wdr mode,and not do merge, show frame separately
+8. Support DCAM800LITE(FW<b10) and DCAM500(FW<b10)
+9. Change SDK release version "x.x.x.x" to "x.x.x"
+
+V3.0.1.0
+1. Support DCAM710(FW<b65)
+2. Fix some bug
+
+V3.0.0.9
+1. Support DCAM800LITE(usb),DCAM500
+2. Add api
+	Ps2_SetWDRPulseCount
+	Ps2_GetWDRPulseCount
+	Ps2_GetSerialNumber
+	Ps2_GetFirmwareVersionNumber
+3. Support DSP(PsDepthAndIR_30) and RGB 480P_YUV,DCAM710(FW>=b65) DCAM305(FW>=b44)
+4. Add hotplug status callback api Ps2_SetHotPlugStatusCallback
+	
+V3.0.0.8
+1. Fix some bug
+2. Support DCAM800LITE,DCAM305
+ 
+V3.0.0.7
+1. The "FrameViewer_DCAM800.exe" in Tools is for DCAM800,
+   The "FrameViewer_DCAM710.exe" in Tools is for DCAM710,
+2. When recompile "FrameViewer" in "Samples",
+   please modify the macro definition in PicoZense_decmtype.h according to the module  
+
+V3.0.0.3
+1. Optimize SDK code
+2. Optimize	SDK demo
+3. Fix some bug
+
+V3.0.0.0
+1.Refactoring version 
